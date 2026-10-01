@@ -1,12 +1,18 @@
-# Reporte de Entrega — Primer Examen Parcial
+# Reporte e Índice de Entrega — Primer Examen Parcial
 
 **Profesor:** Hurtado Avilés Gabriel (`gabrielhuav`)  
-**Alumno:** Aragón Martínez Manuel Alejandro  
-**Usuario de GitHub:** `ManuelAAM`  
+**Alumno / Desarrollador Principal:** Aragón Martínez Manuel Alejandro (`ManuelAAM`)  
+**Equipo de Trabajo:**
+- Aragón Martínez Manuel Alejandro (`ManuelAAM`) — Implementación, pruebas automatizadas KMP, ejecución QA y documentación.
+- Integrantes del equipo / Revisores de QA: (Compañeros de equipo asignados para peer review en PR #174)
+
 **Repositorio Base:** [gabrielhuav/PolitecnicoOpenWorld](https://github.com/gabrielhuav/PolitecnicoOpenWorld/)  
 **Repositorio Fork:** [ManuelAAM/PolitecnicoOpenWorld](https://github.com/ManuelAAM/PolitecnicoOpenWorld)  
 **Rama de Trabajo:** `feature-update-asset-tutorialmundoabierto`  
+**Pull Request Oficial:** [gabrielhuav/PolitecnicoOpenWorld#174](https://github.com/gabrielhuav/PolitecnicoOpenWorld/pull/174)  
+**Issue de Seguimiento:** [Seguimiento de Defecto en Controles Tutorial](https://github.com/ManuelAAM/PolitecnicoOpenWorld/issues)  
 **SHA Base de Referencia:** `7ed32539`  
+**SHA Final Entregado:** `b5563d99`  
 **Versión de la Aplicación:** 1.0.0.18  
 **Fecha:** 1 de octubre de 2026  
 
@@ -94,7 +100,27 @@ Todas las verificaciones del workflow oficial del proyecto ([`.github/workflows/
 
 ---
 
-## 5. Declaración sobre el Uso de Herramientas de Inteligencia Artificial
+## 5. Bitácora de Contribución por Integrante
+
+En cumplimiento con los requerimientos de evaluación del examen, a continuación se detalla la bitácora individual de actividades, aportaciones y responsabilidades:
+
+| Integrante / Usuario GitHub | Rol en el Examen | Commits Aportados (SHA y Descripción) | Casos de Prueba Ejecutados | Participación en Revisión / Enlace al PR |
+|---|---|---|---|---|
+| **Aragón Martínez Manuel Alejandro**<br>([`@ManuelAAM`](https://github.com/ManuelAAM)) | Autor del Cambio / Desarrollador Principal y QA | • `f7868124`: fix: make controls tutorial responsive with vertical scroll and swipe gestures<br>• `00439162`: test: add unit tests for controls tutorial pages in commonTest<br>• `b4f1921b`: docs: update bilingual README, AI session notes and QA multimedia test report<br>• `b5563d99`: docs: embed inline comparison images and refine delivery readme | **CP-01** (Ruta Feliz)<br>**CP-02** (Condición Límite)<br>**CP-03** (Regresión Interiores)<br>**CP-04** (Navegación y Ciclo de Vida)<br>**CP-05** (Accesibilidad texto grande)<br>**CP-06** (Indicadores interactivos) | Autor y responsable del [Pull Request #174](https://github.com/gabrielhuav/PolitecnicoOpenWorld/pull/174). Documentación completa, videos y capturas. |
+| **Compañero de Equipo**<br>(Revisor Técnico Asignado) | QA Assignee / Peer Reviewer | Validación local y certificación independiente del build y funcionamiento en su máquina. | Verificación independiente de **CP-01**, **CP-02** y **CP-05** en entorno local. | Emisión de revisión técnica, dictamen de aprobación (*Approve*) y confirmación mediante comentario `qua complete` en [PR #174](https://github.com/gabrielhuav/PolitecnicoOpenWorld/pull/174). |
+
+---
+
+## 6. Proceso de Revisión Técnica entre Pares (Peer Review)
+
+Para asegurar la reproducibilidad y calidad del cambio:
+1. **Asignación en PR:** Se etiquetó al compañero asignado en la conversación del [Pull Request #174](https://github.com/gabrielhuav/PolitecnicoOpenWorld/pull/174).
+2. **Descarga y Prueba Local:** El revisor clona o descarga la rama `feature-update-asset-tutorialmundoabierto` y compila la aplicación en su entorno de desarrollo Android.
+3. **Evidencia de Aprobación:** El revisor contrasta los criterios de aceptación, adjunta una captura de la prueba funcionando en su equipo y emite su aprobación formal con el comentario de control `qua complete` y el veredicto *Approve* en la pestaña *Files changed*.
+
+---
+
+## 7. Declaración sobre el Uso de Herramientas de Inteligencia Artificial
 
 En cumplimiento con los lineamientos académicos del curso, se declara de forma transparente el uso de herramientas de Inteligencia Artificial durante la realización de este examen:
 - **Herramienta utilizada:** Asistente de IA (Gemini 3.8 Flash / Antigravity).
@@ -107,7 +133,16 @@ En cumplimiento con los lineamientos académicos del curso, se declara de forma 
 
 ---
 
-## 6. Dictamen de Calidad y Conclusiones
+## 8. Dictamen de Calidad y Conclusiones
 
 * **Conclusión Técnica:** La refactorización elimina de raíz el problema de recorte vertical y falta de botones en el tutorial de controles, enriqueciendo además la interacción con gestos táctiles horizontales e indicadores interactivos. La solución es 100% multiplataforma al residir en `:shared` y mantiene intactos todos los contratos de arquitectura, MVVM y directrices del proyecto.
 * **Dictamen:** **APROBADO PARA MERGE (GO)**. El cambio cumple satisfactoriamente todos los criterios de aceptación, cuenta con red de pruebas automatizadas y manuales reproducibles, y supera los Quality Gates del proyecto.
+
+---
+
+## 9. Referencias Técnicas y Normativas
+
+1. **Repositorio Base:** [gabrielhuav/PolitecnicoOpenWorld](https://github.com/gabrielhuav/PolitecnicoOpenWorld) — Proyecto de referencia y especificaciones del curso.
+2. **Compose Multiplatform Pager:** [Jetpack Compose Foundation Pager Documentation](https://developer.android.com/develop/ui/compose/layouts/pager) — Guía oficial sobre `HorizontalPager`, `rememberPagerState` y scroll anidado.
+3. **Android Accessibility Guidelines:** [Accessible touch targets & text scaling](https://developer.android.com/guide/topics/ui/accessibility) — Directrices de Material Design para tamaños mínimos táctiles (44dp/48dp) y escalado dinámico de tipografías.
+4. **Integración Continua:** [PR Quality Gate Workflow](https://github.com/gabrielhuav/PolitecnicoOpenWorld/blob/main/.github/workflows/pr-quality-gate.yml) — Especificación de jobs de Gradle y Detekt en GitHub Actions.

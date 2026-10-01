@@ -1,10 +1,5 @@
-# Índice de Entrega — Primer Examen Parcial
-## Desarrollo de Aplicaciones Móviles Nativas
+# Reporte de Entrega — Primer Examen Parcial
 
-**Institución:** Instituto Politécnico Nacional — Escuela Superior de Cómputo (ESCOM)  
-**Plan de Estudios:** Ingeniería en Sistemas Computacionales (Plan 2020)  
-**Materia:** Desarrollo de Aplicaciones Móviles Nativas  
-**Periodo:** 2027-1 | **Grupo:** 7CV4  
 **Profesor:** Hurtado Avilés Gabriel (`gabrielhuav`)  
 **Alumno:** Aragón Martínez Manuel Alejandro  
 **Usuario de GitHub:** `ManuelAAM`  
@@ -13,7 +8,7 @@
 **Rama de Trabajo:** `feature-update-asset-tutorialmundoabierto`  
 **SHA Base de Referencia:** `7ed32539`  
 **Versión de la Aplicación:** 1.0.0.18  
-**Fecha de Entrega:** 1 de octubre de 2026  
+**Fecha:** 1 de octubre de 2026  
 
 ---
 
@@ -46,17 +41,19 @@ Se refactorizó el componente compartido en Kotlin Multiplatform [`ControlsTutor
 
 ## 2. Evidencias Visuales y Multimedia (Antes vs. Después)
 
-Todos los recursos de evidencia se encuentran ubicados en la carpeta [`docs/`](./) del repositorio:
+Todos los recursos se encuentran en la carpeta [`docs/`](./) del repositorio. A continuación se presentan las capturas comparativas con tamaño adaptado (360px de ancho) para su visualización directa:
 
-| Estado | Recurso | Descripción de la Evidencia |
-|---|---|---|
-| **Antes (Falla)** | [`Captura 1.1 - Ventana Tutorial Incompleta.jpg`](Captura%201.1%20-%20Ventana%20Tutorial%20Incompleta.jpg) | Página "Conducir" (Y): El texto se corta a la mitad ("acelera, frena y gira..."), los puntos y los botones inferiores están totalmente fuera de pantalla. |
-| **Antes (Falla)** | [`Captura 1.2 - Ventana Tutorial Incompleta.jpg`](Captura%201.2%20-%20Ventana%20Tutorial%20Incompleta.jpg) | Página "Correr" (A): Texto breve donde los puntos apenas tocan el borde inferior y los botones de acción quedan cortados e inaccesibles. |
-| **Antes (Falla)** | [`Captura 1.3 - Ventana Tutorial Incompleta.jpg`](Captura%201.3%20-%20Ventana%20Tutorial%20Incompleta.jpg) | Página "Interactuar" (X): La última línea de texto ("objetos de misión") queda rebanada y la barra inferior no se visualiza. |
-| **Antes (Falla)** | [`Tutorial Desactualizado.mp4`](Tutorial%20Desactualizado.mp4) | Video demostrativo del comportamiento erróneo original: ausencia de swipe y controles ocultos bajo el marco del teléfono. |
-| **Después (Solución)** | [`Captura 2.1 - Ventana Tutorial Corregida.jpg`](Captura%202.1%20-%20Ventana%20Tutorial%20Corregida.jpg) | Tutorial corregido en el Samsung Galaxy A54 5G: Cabecera fija, botones "Anterior" y "Siguiente" 100% visibles y contenido centrado. |
-| **Después (Solución)** | [`Captura 2.2 - Ventana Tutorial Corregida.jpg`](Captura%202.2%20-%20Ventana%20Tutorial%20Corregida.jpg) | Demostración de adaptabilidad con fuente grande de accesibilidad y scroll vertical activo sin recorte de controles. |
-| **Después (Solución)** | [`Controles Tutorial Corregido.mp4`](Controles%20Tutorial%20Corregido.mp4) | Video completo de la nueva versión: navegación por gestos swipe (deslizamiento horizontal), scroll vertical en textos largos y salto directo mediante puntos indicadores. |
+### 2.1 Comparativa Visual Directa (Antes vs. Después)
+
+| Antes: Falla Original (Recorte y Controles Fuera de Pantalla) | Después: Solución Implementada (Responsive y Swipe) |
+|:---:|:---:|
+| <a href="Captura%201.1%20-%20Ventana%20Tutorial%20Incompleta.jpg"><img src="Captura%201.1%20-%20Ventana%20Tutorial%20Incompleta.jpg" alt="Antes: Página Conducir cortada" width="360" /></a><br><sub>**Antes (Página "Conducir"):** Texto cortado a la mitad ("acelera, frena y gira...") y botones inferiores completamente invisibles por debajo de pantalla.</sub> | <a href="Captura%202.1%20-%20Ventana%20Tutorial%20Corregida.jpg"><img src="Captura%202.1%20-%20Ventana%20Tutorial%20Corregida.jpg" alt="Después: Tutorial corregido Galaxy A54" width="360" /></a><br><sub>**Después (Samsung Galaxy A54 5G):** Tarjeta con márgenes seguros, botones "Anterior" y "Siguiente" 100% visibles, soporte de gestos swipe y scroll vertical.</sub> |
+| <a href="Captura%201.2%20-%20Ventana%20Tutorial%20Incompleta.jpg"><img src="Captura%201.2%20-%20Ventana%20Tutorial%20Incompleta.jpg" alt="Antes: Botones tocando borde inferior" width="360" /></a><br><sub>**Antes (Página "Correr"):** Puntos tocando el borde y botones de acción inferiores cortados e inaccesibles.</sub> | <a href="Captura%202.2%20-%20Ventana%20Tutorial%20Corregida.jpg"><img src="Captura%202.2%20-%20Ventana%20Tutorial%20Corregida.jpg" alt="Después: Accesibilidad con fuente grande" width="360" /></a><br><sub>**Después (Accesibilidad y Gran Fuente):** Adaptabilidad con texto escalado del sistema; el contenido hace scroll vertical y los botones se mantienen fijos.</sub> |
+| <a href="Captura%201.3%20-%20Ventana%20Tutorial%20Incompleta.jpg"><img src="Captura%201.3%20-%20Ventana%20Tutorial%20Incompleta.jpg" alt="Antes: Texto rebanado en interactuar" width="360" /></a><br><sub>**Antes (Página "Interactuar"):** Texto rebanado al final ("objetos de misión") y barra de navegación oculta.</sub> | *(Navegación completa por swipe y botones en las 6 páginas de mundo abierto y 5 de interiores)* |
+
+### 2.2 Demostraciones en Video
+* ❌ **Comportamiento Anterior (Defecto):** [▶️ Reproducir Video: `Tutorial Desactualizado.mp4`](Tutorial%20Desactualizado.mp4) — Exhibe la ausencia de gestos táctiles (swipe) y la pérdida de controles bajo el marco del teléfono.
+* ✅ **Comportamiento Corregido (Solución):** [▶️ Reproducir Video: `Controles Tutorial Corregido.mp4`](Controles%20Tutorial%20Corregido.mp4) — Muestra la navegación con deslizamiento horizontal (swipe), desplazamiento vertical de texto largo e interacción con puntos indicadores.
 
 ---
 

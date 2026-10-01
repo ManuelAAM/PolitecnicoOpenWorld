@@ -1,9 +1,6 @@
 # Plan y Matriz de Aseguramiento de Calidad (QA)
 
 **Proyecto:** Politécnico Open World (POW)  
-**Institución:** Escuela Superior de Cómputo (ESCOM) — Instituto Politécnico Nacional  
-**Materia:** Desarrollo de Aplicaciones Móviles Nativas — Primer Examen Parcial  
-**Grupo:** 7CV4  
 **Profesor:** Hurtado Avilés Gabriel  
 **Alumno / Autor del QA:** Aragón Martínez Manuel Alejandro  
 **Rama:** `feature-update-asset-tutorialmundoabierto`  

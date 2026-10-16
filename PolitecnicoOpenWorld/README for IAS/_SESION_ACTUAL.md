@@ -3,33 +3,22 @@
 > Único traspaso entre IAs. Ventana de 2 días; máximo 200 líneas. Aquí va estado medido,
 > trabajo abierto y trampas caras. Diseño e historia viven en los documentos de cada área.
 
-**Última actualización:** 2026-09-30 · Gemini 3.8 Flash (High) · rama `feature-update-asset-tutorialmundoabierto`
+**Última actualización:** 2026-09-28 · Botón de Pausa HUD y Menú de Pausa Mejorado en Titulación por Combate · rama `new-feature`
 
-## 🎮 09-30: TUTORIAL DE CONTROLES (Mundo Abierto e Interiores) — adaptabilidad y gestos resueltos
+## ✅ 09-28 / 09-30: BOTÓN DE PAUSA HUD (CON ASSET) + MENÚ DE PAUSA MEJORADO (Titulación por Combate)
 
-Refactorización de `ControlsTutorialOverlay` en `features/settings/ui/ControlsTutorial.kt` (`:shared` / `commonMain`).
-
-### ✅ RESUELTO — desbordamiento vertical, recorte de botones y falta de gestos deslizantes
-- **Síntoma:** En orientación horizontal (pantallas de ~360-400dp de alto) o con fuentes ampliadas de accesibilidad, el diálogo del tutorial se desbordaba por debajo de la pantalla: el texto explicativo de controles ("Conducir", "Interactuar") se cortaba a la mitad, y los botones de acción ("Anterior", "Siguiente", "¡Entendido!") y los puntos indicadores desaparecían fuera del área visible. Además, no se podía cambiar de página deslizando con el dedo ni hacer scroll en textos largos.
-- **Solución implementada:**
-  1. **HorizontalPager:** Se migró el estado de página estático a `HorizontalPager(state = pagerState)` de Compose Foundation con `rememberPagerState`. Soporta gestos táctiles naturales de deslizamiento horizontal (swipe izquierda/derecha) para navegar entre instrucciones.
-  2. **Contenedor adaptativo con anclaje Header/Footer:** La cabecera (Título + "✕") y el pie (puntos indicadores + botones "Anterior" y "Siguiente") se fijaron dentro de la tarjeta con padding seguro (`padding(vertical = 12.dp)` y `widthIn(max = 440.dp)`), impidiendo que queden fuera de la pantalla sin importar el tamaño del dispositivo.
-  3. **Scroll vertical interno por página:** El área central de contenido se ubicó en un contenedor con `Modifier.weight(1f, fill = false)`, y cada página cuenta con `Modifier.verticalScroll(rememberScrollState())`. Si la pantalla es corta o el texto es largo, se puede desplazar hacia arriba para leer el contenido completo con fluidez.
-  4. **Navegación interactiva por indicadores:** Los puntos indicadores inferiores ahora son clicables para saltar directamente a cualquier página mediante `animateScrollToPage()`.
-  5. **Pruebas unitarias KMP:** Se crearon pruebas automatizadas en `shared/src/commonTest/kotlin/ovh/gabrielhuav/pow/features/settings/ui/ControlsTutorialTest.kt` validando el catálogo de páginas, la presencia de botones A/B/X/Y y la integridad de recursos.
-
-**Verificación:**
-- `./gradlew :app:assembleDebug :app:testDebugUnitTest :shared:testAndroidHostTest` -> BUILD SUCCESSFUL (0 fallos).
-- `./gradlew :shared:compileKotlinIosSimulatorArm64` -> BUILD SUCCESSFUL (0 fallos).
-- `detekt` exit 0 (0 errores de análisis estático).
-- `bash tools/check_kmp_test_names.sh` -> OK.
-
----
-
-> ⚠️ **El trabajo de iOS/mundo abierto medido hasta el 08-17 (ANRs en `NativeOsmMap`, fases 5/6
-> del mundo, puente JS↔Swift) se purgó a `_ARCHIVO/HISTORIAL_sesiones_2026-08-17.md`** — pasaron
-> 13 días sin que nadie lo tocara. Nada de esto se tocó en esta sesión. Si retomas ese hilo,
-> verifica primero si sigue vigente antes de confiar en esas cifras.
+- **Problema previo:** En plena pelea, el botón superior derecho era únicamente una "✕" que abría directamente el diálogo de abandonar la pelea hacia el mapa exterior ("Salir de la pelea"). La pausa solo se activaba de forma pasiva al bloquear o minimizar la pantalla, y el overlay de pausa solo ofrecía "Continuar". No había forma de pausar manualmente para revisar combos o reiniciar la ronda.
+- **Implementación (todo en Compose Multiplatform / `commonMain`):**
+  1. `StreetFighterScreen.kt`:
+     - **Botones en HUD superior:** En la esquina superior derecha (`Alignment.TopEnd` con `systemBarsPadding()`), se ubica el botón de pausa con el asset gráfico pixel-art oficial (`ic_button_pause.png`, `size(24.dp)`) a la izquierda del botón de salida (**`✕`**). Con esto no interfiere con el cronómetro ni el cartel de KO central.
+     - Preserva `systemBarsPadding()` defensivo para evitar solapamientos con la barra de estado en iOS y Android.
+  2. Asset gráfico añadido: `shared/src/commonMain/composeResources/drawable/ic_button_pause.png` (extraído y optimizado con fondo transparente a partir de `Button Pause.jpg`).
+  3. Menú de pausa enriquecido con opciones completas:
+     - **Continuar** (`sf_continue`)
+     - **Lista de movimientos** (`sf_pause_moves`): Invoca la `SfComboSheetOverlay` del peleador actual en plena pausa para consultar comandos sin abandonar el combate.
+     - **Reiniciar combate** (`sf_pause_restart`): Despausa y reinicia la pelea de inmediato vía `controller.restartBattle()`.
+     - **Salir al menú** (`sf_pause_exit`): Abre la confirmación estándar para salir.
+  4. Strings localizados con paridad completa en español e inglés en `composeResources/values/strings.xml` y `values-en/strings.xml`.
 
 ## 🍏 09-05 (Mac): VERIFICADO EN EL SIMULADOR — 1 fallo de texto, la memoria NO empeoró
 
